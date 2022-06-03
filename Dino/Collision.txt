@@ -1,0 +1,21 @@
+if (!collision) {
+                    var HP = document.querySelector(".HP")
+                    this.distanceRan += this.currentSpeed * deltaTime / this.msPerFrame;
+                    if (this.isCollision == true) {
+                        this.isCollision = false;
+                        if (this.horizon.obstacles[0].typeConfig.type == "HP"){
+                            this.lives++;
+                            HP.innerHTML = "HP " + this.lives;
+                        }else{
+                            this.lives--;
+                            HP.innerHTML = "HP " + this.lives;
+                        } 
+                    }
+                    if (this.currentSpeed < this.config.MAX_SPEED) {
+                        this.currentSpeed += this.config.ACCELERATION;
+                    }
+                }else if(this.lives != 0 || this.horizon.obstacles[0].typeConfig.type == "HP"){
+                    this.isCollision = true;
+                }else {
+                    this.gameOver();
+                } 
